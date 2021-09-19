@@ -1,22 +1,17 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-
+from datetime import datetime, timedelta
 app = FastAPI()
 
 #rota raiz
 @app.get("/")
 def home():
-    return (""" <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Minha página de teste</title>
-  </head>
-  <body>
-  <h1>Todos Conectados!!! Bem vindo ao Fideliza !!!</h1>
-    <img src="imagens/firefox-icon.png" alt="fideliza logo">
-  </body>
-</html> """)
+    d = datetime.today() - timedelta(hours=3, minutes=00)
+
+    data_hora_atual = d.strftime('%d/%m/%Y %H:%M:%S')
+
+    return ("Todos Conectados!!! Bem vindo ao Fideliza !!! ", data_hora_atual)
+
 class Usuario(BaseModel):
     id: int
     email: str
