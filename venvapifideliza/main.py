@@ -6,8 +6,17 @@ app = FastAPI()
 #rota raiz
 @app.get("/")
 def home():
-    return ("Todos Conectados!!! Bem vindo ao Fideliza !!!")
-
+    return (""" <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Minha página de teste</title>
+  </head>
+  <body>
+  <h1>Todos Conectados!!! Bem vindo ao Fideliza !!!</h1>
+    <img src="imagens/firefox-icon.png" alt="fideliza logo">
+  </body>
+</html> """)
 class Usuario(BaseModel):
     id: int
     email: str
