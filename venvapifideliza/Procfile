@@ -1,1 +1,1 @@
-web: uvicorn main:app --reload --port 80
+web: uvicorn main:app --reload --port 80 --host https://apifid.herokuapp.com/
