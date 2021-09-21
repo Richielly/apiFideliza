@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from datetime import datetime, timedelta
+from Util.connections import *
+
 app = FastAPI()
 
 #rota raiz
@@ -27,9 +29,11 @@ base_de_dados = [
 
 @app.get('/all_users')
 def all_users():
-    return base_de_dados
-
-#rota para buscar por id os dados no banco
+    conn = connection()
+    con = conn.conect()
+    cursor = conn.cursor(con)
+    return conn.execute(cursor, """ select * from usuarios""")
+# #rota para buscar por id os dados no banco
 
 @app.get('/user')
 def user(id_user:int):
@@ -53,3 +57,4 @@ def delete_user(id_user:int):
             return {"Status": 200, "Mensagem": "Usuario deletado com sucesso."}
 
     return {"Status": 404, "Mensagem": "Usuario não encontrado."}
+
