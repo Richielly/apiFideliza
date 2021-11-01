@@ -35,6 +35,17 @@ def all_users():
     return conn.execute(cursor, """ select * from usuarios""")
 # #rota para buscar por id os dados no banco
 
+@app.get('/almox_data')
+def almox_data():
+    return ['unidade de medida     ', '87', 'grupo                 ', '34',
+'subgrupo              ', '241', 'classe                ', '361',
+'objetos da despesa    ', '13', 'derivações            ', '1',
+'componentes           ', '1', 'tipo movimentação     ', '7',
+'ocorrência de produtos', '0', 'produtos              ', '20807',
+'pessoas               ', '14450', 'fornecedores          ', '5884',
+'centros de custo      ', '1868', 'depósitos             ', '15',
+'entradas              ', '53769', 'saídas                ', '82149']
+
 @app.get('/user')
 def user(id_user:int):
     for user in base_de_dados:
